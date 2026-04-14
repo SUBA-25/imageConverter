@@ -18,7 +18,7 @@ The application is containerized using Docker and deployed on AWS using ECS (Far
 
 ## 🧱 Architecture
 
-User → Load Balancer → ECS (Fargate) → Docker Container → Application
+<img width="659" height="593" alt="image" src="https://github.com/user-attachments/assets/ac79bc34-61ad-4247-a02b-8f1897060d27" />
 
 ---
 
@@ -79,7 +79,7 @@ docker push <ECR_URI>
 
 ### 8. Final Deployment
 
-* Application accessible via Load Balancer URL:http://web-app-lb-929074018.eu-north-1.elb.amazonaws.com/
+* Application accessible via Load Balancer URL
 
 ---
 
