@@ -1,12 +1,118 @@
-# React + Vite
+# 🚀 Image to PDF Converter (AWS + Docker + ECS)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 📌 Project Overview
 
-Currently, two official plugins are available:
+This project is a web application that converts images into PDF format.
+The application is containerized using Docker and deployed on AWS using ECS (Fargate) with ECR and Application Load Balancer.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 🛠️ Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+* Frontend: React (Vite)
+* Containerization: Docker
+* Cloud: AWS (ECR, ECS Fargate, ALB)
+* Deployment: ECS Service
+
+---
+
+## 🧱 Architecture
+
+User → Load Balancer → ECS (Fargate) → Docker Container → Application
+
+---
+
+## ⚙️ Step-by-Step Process
+
+### 1. Build Application
+
+* Created frontend using React (Vite)
+* Implemented image to PDF conversion logic
+
+### 2. Dockerization
+
+* Created Dockerfile
+* Built Docker image:
+
+```bash
+docker build -t img-to-pdf .
+```
+
+### 3. Run Locally
+
+```bash
+docker run -p 3000:80 img-to-pdf
+```
+
+### 4. Push to AWS ECR
+
+* Created ECR repository
+* Tagged image
+
+```bash
+docker tag img-to-pdf:latest <ECR_URI>
+```
+
+* Pushed image:
+
+```bash
+docker push <ECR_URI>
+```
+
+### 5. ECS Deployment
+
+* Created Task Definition
+* Added container using ECR image
+* Configured CPU & Memory
+
+### 6. Create ECS Service
+
+* Used Fargate
+* Enabled Load Balancer
+* Set port 80
+
+### 7. Load Balancer Setup
+
+* Created Application Load Balancer
+* Configured Target Group
+* Enabled public access
+
+### 8. Final Deployment
+
+* Application accessible via Load Balancer URL:http://web-app-lb-929074018.eu-north-1.elb.amazonaws.com/
+
+---
+
+## 🌐 Live Demo
+
+Access the application using:
+http://web-app-lb-929074018.eu-north-1.elb.amazonaws.com/
+
+---
+
+## 📌 Key Features
+
+* Upload images
+* Convert to PDF
+* Fast processing
+* Cloud deployment
+
+---
+
+## 📷 Screenshots
+
+<img width="1577" height="799" alt="image" src="https://github.com/user-attachments/assets/257e5b85-230a-4c46-993c-8bddd2be53e1" />
+
+---
+
+## 💡 Future Improvements
+
+* Add backend API (Node.js)
+* Store files in S3
+* Add authentication
+
+---
+
+## 👩‍💻 Author
+
+Subashini
